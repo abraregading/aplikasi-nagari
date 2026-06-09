@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surat Keterangan Penghasilan Orang Tua</title>
+    <style>
+        /* Pengaturan ukuran kertas Folio (F4) */
+        @page {
+            size: 215.9mm 330.2mm; /* Ukuran kertas F4/Folio */
+            margin: 20mm 20mm 20mm 20mm;
+        }
+        
+        body {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 12pt;
+            line-height: 1.5;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .kertas-folio {
+            width: 21.59cm;
+            min-height: 33.02cm;
+            background-color: white;
+            padding: 2.5cm 2cm;
+            box-sizing: border-box;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        /* Kop Surat */
+        .kop-surat {
+            text-align: center;
+            border-bottom: 3px solid black;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .kop-surat h3 {
+            margin: 0;
+            font-size: 14pt;
+            font-weight: bold;
+        }
+
+        .kop-surat h2 {
+            margin: 0;
+            font-size: 16pt;
+            font-weight: bold;
+        }
+
+        .kop-surat p {
+            margin: 5px 0 0 0;
+            font-size: 10pt;
+        }
+
+        /* Judul Surat */
+        .judul-surat {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .judul-surat h4 {
+            margin: 0;
+            font-size: 12pt;
+            text-decoration: underline;
+        }
+
+        .judul-surat p {
+            margin: 0;
+        }
+
+        /* Isi Surat */
+        .isi-surat {
+            text-align: justify;
+        }
+
+        .tabel-data {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+
+        .tabel-data td {
+            vertical-align: top;
+            padding: 2px 0;
+        }
+
+        .tabel-data .label {
+            width: 30%;
+        }
+
+        .tabel-data .titik-dua {
+            width: 2%;
+        }
+
+        .tabel-data .isi {
+            width: 68%;
+        }
+
+        /* Bagian Tanda Tangan */
+        .tanda-tangan {
+            margin-top: 40px;
+            float: right;
+            text-align: center;
+            width: 300px;
+        }
+
+        .tanda-tangan p {
+            margin: 0;
+        }
+
+        .tanda-tangan .nama-ttd {
+            margin-top: 80px; /* Ruang untuk stempel dan tanda tangan */
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        /* Clearfix untuk float */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="kertas-folio">
+        
+        <div class="kop-surat">
+            <h3>PEMERINTAH KABUPATEN PASAMAN BARAT [cite: 1]</h3>
+            <h3>KECAMATAN LEMBAH MELINTANG [cite: 2]</h3>
+            <h2>WALI NAGARI KUAMANG ALAI UJUNG GADING [cite: 3]</h2>
+            <p>Alamat : Jalan Flores Jorong Kuamang, Email : kuamangalaiug@gmail.com, Kode Pos 26372 [cite: 4]</p>
+        </div>
+
+        <div class="judul-surat">
+            <h4>SURAT KETERANGAN PENGHASILAN ORANG TUA [cite: 5]</h4>
+            <p>NOMOR : 400.7.22/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/WN-KA.UG/VII/2025 [cite: 6]</p>
+        </div>
+
+        <div class="isi-surat clearfix">
+            <p>Yang bertanda tangan dibawah ini Penjabat Wali Nagari Kuamang Alai Ujung Gading Kecamatan Lembah Melintang Kabupaten Pasaman Barat dengan ini menerangkan bahwa : [cite: 7]</p>
+            
+            <table class="tabel-data">
+                <tr>
+                    <td class="label">Nama Siswa</td>
+                    <td class="titik-dua">:</td>
+                    <td class="isi">SYOFIYAH MUSLIMAH [cite: 8]</td>
+                </tr>
+                <tr>
+                    <td class="label">Tempat/ Tgl Lahir</td>
+                    <td class="titik-dua">:</td>
+                    <td class="isi">Ujung Gading, 26 Februari 2007 [cite: 9]</td>
+                </tr>
+                <tr>
+                    <td class="label">Nama Universitas</td>
+                    <td class="titik-dua">:</td>
+                    <td class="isi">UNIVERSITAS NEGERI PADANG [cite: 10]</td>
+                </tr>
+                <tr>
+                    <td class="label">Alamat Universitas</td>
+                    <td class="titik-dua">:</td>
+                    <td class="isi">Jl. Prof. Dr. Hamka, Air Tawar Barat, Kec. Padang Utara, Kota Padang, Sumatera Barat 25171 [cite: 11]</td>
+                </tr>
+                <tr>
+                    <td class="label">Alamat Rumah</td>
+                    <td class="titik-dua">:</td>
+                    <td class="isi">Jl. Sulaiman Jorong Kuamang Timur [cite: 12]</td>
+                </tr>
+                <tr>
+                    <td class="label">Nama Orang Tua</td>
+                    <td class="titik-dua">:</td>
+                    <td class="isi">[cite: 13]</td>
+                </tr>
+                <tr>
+                    <td class="label" style="padding-left: 20px;">Ayah</td>
+                    <td class="titik-dua">:</td>
+                    <td class="isi">AGRATIA [cite: 14]</td>
+                </tr>
+                <tr>
+                    <td class="label" style="padding-left: 20px;">Ibu</td>
+                    <td class="titik-dua">:</td>
+                    <td class="isi">SUARMI [cite: 15]</td>
+                </tr>
+                <tr>
+                    <td class="label">Alamat Orang Tua</td>
+                    <td class="titik-dua">:</td>
+                    <td class="isi">Jl. Sulaiman Jorong Kuamang Timur [cite: 16]</td>
+                </tr>
+                <tr>
+                    <td class="label">Pekerjaan Orang Tua</td>
+                    <td class="titik-dua">:</td>
+                    <td class="isi">Mengurus Rumah Tangga [cite: 17]</td>
+                </tr>
+                <tr>
+                    <td class="label">Penghasilan Orang Tua</td>
+                    <td class="titik-dua">:</td>
+                    <td class="isi">± Rp. 3.000.000,- 4.500.000 [cite: 18]</td>
+                </tr>
+                <tr>
+                    <td class="label">Jumlah Tanggungan</td>
+                    <td class="titik-dua">:</td>
+                    <td class="isi">[cite: 19]</td>
+                </tr>
+                <tr>
+                    <td class="label" style="padding-left: 20px;">Anak</td>
+                    <td class="titik-dua">:</td>
+                    <td class="isi">3 Orang [cite: 20]</td>
+                </tr>
+                <tr>
+                    <td class="label" style="padding-left: 20px;">Orang Tua</td>
+                    <td class="titik-dua">:</td>
+                    <td class="isi">- [cite: 21]</td>
+                </tr>
+            </table>
+
+            <p>Demikianlah Surat Keterangan ini dibuat dengan sebenarnya untuk dapat dipergunakan sebagaimana mestinya. [cite: 22]</p>
+
+            <div class="tanda-tangan">
+                <p>Kuamang Alai Ujung Gading, 17 Juli 2025 [cite: 23]</p>
+                <p>Penjabat Wali Nagari [cite: 24]</p>
+                <p>Kuamang Alai Ujung Gading [cite: 25]</p>
+                <p class="nama-ttd">MUHAMMAD ABRAR, A.Md [cite: 26]</p>
+                <p>NIP. 19840330 201101 1 003 [cite: 27]</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+@extends('operator.layouts.app')
+
+@section('title', 'Pengajuan Perubahan Data')
+
+@section('head')
+<style>
+    .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+    .page-header h2 { margin: 0; font-size: 1.4rem; }
+
+    .filter-bar { display: flex; gap: .75rem; margin-bottom: 1.5rem; flex-wrap: wrap; align-items: center; }
+    .filter-bar input, .filter-bar select { padding: .5rem 1rem; border-radius: 8px; border: 1px solid rgba(0,0,0,.1); background: rgba(255,255,255,.6); color: var(--text-main); font-size: .9rem; font-family: inherit; }
+    .filter-bar input:focus, .filter-bar select:focus { outline: none; border-color: var(--primary); }
+    .filter-bar button { padding: .5rem 1.2rem; border-radius: 8px; background: var(--primary); color: #fff; border: none; cursor: pointer; font-weight: 600; font-family: inherit; font-size: .9rem; }
+    .filter-bar button:hover { background: #0284c7; }
+
+    .data-table { width: 100%; border-collapse: collapse; }
+    .data-table th { text-align: left; padding: .75rem; color: var(--text-muted); font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; border-bottom: 2px solid rgba(0,0,0,.08); }
+    .data-table td { padding: .85rem .75rem; font-size: .9rem; border-bottom: 1px solid rgba(0,0,0,.05); vertical-align: middle; }
+    .data-table tr:hover td { background: rgba(14,165,233,.03); }
+
+    .btn-action { padding: .4rem .75rem; border-radius: 8px; font-size: .8rem; text-decoration: none; display: inline-flex; align-items: center; gap: .2rem; transition: all .2s; font-family: inherit; border: none; cursor: pointer; }
+    .btn-view { background: rgba(99,102,241,.1); color: #4f46e5; }
+    .btn-view:hover { background: rgba(99,102,241,.2); }
+    .btn-approve { background: rgba(16,185,129,.15); color: #059669; }
+    .btn-approve:hover { background: rgba(16,185,129,.25); }
+    .btn-reject { background: rgba(239,68,68,.1); color: #dc2626; }
+    .btn-reject:hover { background: rgba(239,68,68,.2); }
+
+    .badge { display: inline-block; padding: .25rem .75rem; border-radius: 20px; font-size: .75rem; font-weight: 600; }
+    .badge-pending { background: rgba(245,158,11,.15); color: #d97706; }
+    .badge-approved { background: rgba(16,185,129,.15); color: #059669; }
+    .badge-rejected { background: rgba(239,68,68,.15); color: #dc2626; }
+
+    .count-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+    .count-card { padding: 1.25rem; border-radius: 14px; text-align: center; background: var(--bg-glass); border: var(--border-glass); }
+    .count-card .number { font-size: 1.8rem; font-weight: 700; }
+    .count-card .label { font-size: .8rem; color: var(--text-muted); margin-top: .2rem; }
+    .count-card.pending .number { color: #d97706; }
+    .count-card.approved .number { color: #059669; }
+    .count-card.rejected .number { color: #dc2626; }
+
+    .empty-state { text-align: center; padding: 3rem; color: var(--text-muted); }
+    .alert { padding: 1rem 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; display: flex; align-items: center; gap: .5rem; }
+    .alert-success { background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.25); color: #059669; }
+    .alert-error { background: rgba(239,68,68,.1); border: 1px solid rgba(239,68,68,.25); color: #dc2626; }
+
+    @media(max-width:768px) { .table-wrapper { overflow-x: auto; } .filter-bar { flex-direction: column; align-items: stretch; } .count-cards { grid-template-columns: 1fr; } }
+</style>
+@endsection
+
+@section('konten')
+<div class="page-header">
+    <h2><i class="ri-edit-box-line" style="color: var(--primary)"></i> Pengajuan Perubahan Data</h2>
+</div>
+
+@if(session('success'))
+<div class="alert alert-success"><i class="ri-check-line"></i> {{ session('success') }}</div>
+@endif
+@if(session('error'))
+<div class="alert alert-error"><i class="ri-error-warning-line"></i> {{ session('error') }}</div>
+@endif
+
+<div class="count-cards">
+    <div class="count-card pending">
+        <div class="number">{{ $counts['pending'] }}</div>
+        <div class="label">Menunggu</div>
+    </div>
+    <div class="count-card approved">
+        <div class="number">{{ $counts['approved'] }}</div>
+        <div class="label">Disetujui</div>
+    </div>
+    <div class="count-card rejected">
+        <div class="number">{{ $counts['rejected'] }}</div>
+        <div class="label">Ditolak</div>
+    </div>
+</div>
+
+<div class="glass" style="padding: 1.5rem; border-radius: 16px;">
+    <form method="GET" class="filter-bar">
+        <input type="text" name="search" placeholder="Cari nama atau NIK..." value="{{ request('search') }}">
+        <select name="status">
+            <option value="all" {{ request('status') == 'all' ? 'selected' : '' }}>Semua Status</option>
+            <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Pending</option>
+            <option value="approved" {{ request('status') == 'approved' ? 'selected' : '' }}>Disetujui</option>
+            <option value="rejected" {{ request('status') == 'rejected' ? 'selected' : '' }}>Ditolak</option>
+        </select>
+        <button type="submit"><i class="ri-search-line"></i> Filter</button>
+    </form>
+
+    <div class="table-wrapper">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Pemohon</th>
+                    <th>NIK</th>
+                    <th>Data Diajukan</th>
+                    <th>Tanggal</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse($pengajuan as $p)
+                <tr>
+                    <td style="font-weight:500;">{{ $p->user->name ?? '-' }}</td>
+                    <td>{{ $p->penduduk->nik ?? '-' }}</td>
+                    <td style="font-size:.8rem;color:var(--text-muted);">
+                        @php
+                            $fields = [];
+                            if ($p->data_baru) {
+                                foreach ($p->data_baru as $key => $value) {
+                                    if ($value != ($p->penduduk->$key ?? '')) {
+                                        $label = str_replace('_', ' ', ucfirst($key));
+                                        $fields[] = $label;
+                                    }
+                                }
+                            }
+                        @endphp
+                        {{ implode(', ', array_slice($fields, 0, 3)) }}{{ count($fields) > 3 ? ', ...' : '' }}
+                    </td>
+                    <td>{{ $p->created_at->format('d/m/Y H:i') }}</td>
+                    <td>
+                        <span class="badge badge-{{ $p->status }}">
+                            {{ ucfirst($p->status) }}
+                        </span>
+                    </td>
+                    <td>
+                        <a href="{{ route('operator.pengajuan-perubahan.show', $p->id) }}" class="btn-action btn-view" title="Detail"><i class="ri-eye-line"></i> Detail</a>
+                    </td>
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="6" class="empty-state">
+                        <i class="ri-inbox-line" style="font-size:2rem;display:block;margin-bottom:.5rem;"></i>
+                        <p>Belum ada pengajuan perubahan data</p>
+                    </td>
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+
+    <div style="display:flex;justify-content:center;gap:.5rem;margin-top:1.5rem;">
+        {{ $pengajuan->links() }}
+    </div>
+</div>
+@endsection

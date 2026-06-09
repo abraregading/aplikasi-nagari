@@ -1,0 +1,59 @@
+@extends('admin.layouts.app')
+
+@section('title', 'Dashboard Data Kategori Berita')
+
+
+@section('head')
+<!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+@endsection
+@section('konten')
+<h2 style="margin-bottom: 2rem;">Data Kategori Berita</h2>
+
+  <div class="glass" style="padding: 2rem; border-radius: 16px;">
+      <a href="{{ route('kategori-berita.create') }}" style="background:var(--primary); color:white; border:none; padding:0.8rem 1.5rem; border-radius:8px; cursor:pointer;">Tambah Kategori</a><br><br><br>
+      <div class="table-overlay">
+          <table id="example" class="display" style="width:100%">
+              <thead>
+                  <tr>
+                      <th width="50%">Kategori Berita</th>
+                      <th width="30%">Link</th>
+                      <th>Aksi</th>
+                  </tr>
+              </thead>
+              <tbody>
+                @foreach($kategoriberita as $kategoriberita)
+                  <tr>
+                      <td>{{ $kategoriberita->kategori_berita }}</td>
+                      <td>{{ $kategoriberita->link }}</td>
+                      <td>
+                          <a href="{{ route('kategori-berita.edit', $kategoriberita->id) }}" class="glass-select" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.25); padding: 0.4rem 0.8rem; font-size: 0.8rem; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 0.3rem;">Edit</a>
+                          <form action="{{ route('kategori-berita.destroy', $kategoriberita->id) }}" method="POST" style="display: inline;">
+                              @csrf
+                              @method('DELETE')
+                              <button type="submit" class="glass-select" style="background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.25); padding: 0.4rem 0.8rem; font-size: 0.8rem; font-weight: 500; cursor: pointer; display: inline-flex; align-items: center; gap: 0.3rem;" onclick="return confirm('Are you sure?')">Delete</button>
+                          </form>
+                      </td>
+                  </tr>
+                @endforeach
+              </tbody>
+          </table>
+      </div>
+  </div>
+@endsection
+
+@section('script')
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable({
+                responsive: true,
+                language: {
+                    searchPlaceholder: "Search records..."
+                }
+            });
+        });
+    </script>
+@endsection

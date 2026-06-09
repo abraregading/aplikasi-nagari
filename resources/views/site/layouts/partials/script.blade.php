@@ -1,0 +1,1 @@
+<script src="{{asset('site')}}/script.js"></script>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Peristiwa Kematian</title>
+    <style>
+        /* Pengaturan ukuran kertas Folio (F4) siap cetak */
+        @page {
+            size: 8.5in 13in landscape; /* Dibuat landscape agar tabel yang panjang muat */
+            margin: 15mm;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 11pt;
+            color: #000;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Header / Identitas Laporan */
+        .header-info {
+            margin-bottom: 20px;
+        }
+        .header-info table {
+            width: auto;
+            border-collapse: collapse;
+            border: none;
+        }
+        .header-info td {
+            padding: 3px 5px;
+            border: none;
+            font-weight: bold;
+        }
+
+        /* Judul Dokumen */
+        h2 {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 14pt;
+            margin-bottom: 20px;
+            text-decoration: underline;
+        }
+
+        /* Tabel Utama */
+        .main-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        
+        .main-table th, .main-table td {
+            border: 1px solid #000;
+            padding: 8px 5px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .main-table th {
+            font-weight: bold;
+            background-color: #f2f2f2; /* Warna latar tipis untuk header tabel */
+            font-size: 10pt;
+        }
+
+        .main-table td {
+            height: 30px; /* Tinggi baris kosong untuk diisi tulisan tangan */
+        }
+
+        /* Kolom Tanda Tangan */
+        .signature-section {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .signature-box {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 120px; /* Jarak untuk tanda tangan */
+        }
+
+        /* Sembunyikan elemen non-cetak saat di-print */
+        @media print {
+            body {
+                background: none;
+            }
+            .main-table th {
+                background-color: transparent; /* Hilangkan warna latar saat dicetak untuk menghemat tinta */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="header-info">
+            <table>
+                <tr>
+                    <td>Jorong</td>
+                    <td>: ................................................</td>
+                </tr>
+                <tr>
+                    <td>Nagari</td>
+                    <td>: ................................................</td>
+                </tr>
+                <tr>
+                    <td>Kecamatan</td>
+                    <td>: ................................................</td>
+                </tr>
+                <tr>
+                    <td>Bulan</td>
+                    <td>: ................................................</td>
+                </tr>
+            </table>
+        </div>
+
+        <h2>Laporan Peristiwa Kematian (Buku Pokok Pemakaman)</h2>
+
+        <table class="main-table">
+            <thead>
+                <tr>
+                    <th rowspan="2" style="width: 3%;">NO</th>
+                    <th rowspan="2" style="width: 12%;">NIK</th>
+                    <th rowspan="2" style="width: 15%;">NAMA</th>
+                    <th rowspan="2" style="width: 12%;">TEMPAT MENINGGAL</th>
+                    <th rowspan="2" style="width: 5%;">ANAK KE</th>
+                    <th rowspan="2" style="width: 12%;">JAM (WIB), TGL, BLN, THN<br>WAKTU MENINGGAL</th>
+                    <th rowspan="2" style="width: 11%;">SEBAB KEMATIAN</th>
+                    <th colspan="2">SAKSI MENINGGAL 2 ORANG</th>
+                    <th rowspan="2" style="width: 10%;">PELAPOR<br>& NO HP.</th>
+                </tr>
+                <tr>
+                    <th style="width: 10%;">SAKSI I<br>(NAMA DAN NIK)</th>
+                    <th style="width: 10%;">SAKSI II</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>6</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>7</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>8</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>9</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>10</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>11</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>13</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>14</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>15</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            </tbody>
+        </table>
+
+        <div class="signature-section">
+            <div class="signature-box">
+                <div>Mengetahui,<br>Wali Nagari</div>
+                <div>( ..................................... )</div>
+            </div>
+            
+            <div class="signature-box">
+                <div><br>Kepala Jorong</div>
+                <div>( ..................................... )</div>
+            </div>
+            
+            <div class="signature-box">
+                <div><br>Pelapor,</div>
+                <div>( ..................................... )</div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
