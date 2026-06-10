@@ -159,7 +159,7 @@
                     <option value="TAMAT SD/SEDERAJAT" {{ $ptVal == 'TAMAT SD/SEDERAJAT' ? 'selected' : '' }}>TAMAT SD/SEDERAJAT</option>
                     <option value="SLTP/SEDERAJAT" {{ $ptVal == 'SLTP/SEDERAJAT' ? 'selected' : '' }}>SLTP/SEDERAJAT</option>
                     <option value="SLTA/SEDERAJAT" {{ $ptVal == 'SLTA/SEDERAJAT' ? 'selected' : '' }}>SLTA/SEDERAJAT</option>
-                    <option value="D1/D2/D3" {{ $ptVal == 'D1/D2/D3' ? 'selected' : '' }}>D1/D2/D3</option>
+                    <option value="D1/D2/D3" {{ $ptVal == 'D1/D2/D3' ? 'selected' : '' }}>D1/D2/D3</opti    on>
                     <option value="S1" {{ $ptVal == 'S1' ? 'selected' : '' }}>S1</option>
                     <option value="S2" {{ $ptVal == 'S2' ? 'selected' : '' }}>S2</option>
                     <option value="S3" {{ $ptVal == 'S3' ? 'selected' : '' }}>S3</option>
