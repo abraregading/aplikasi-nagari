@@ -11,6 +11,17 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $users = [
+            // Super Admin
+            [
+                'name' => 'SuperAdministrator',
+                'username' => 'super admin',
+                'email' => 'superadmin@siyanduk.test',
+                'password' => Hash::make('password123'),
+                'role' => 'superadmin',
+                'nik' => '0000000000000001',
+                'jorong' => null,
+                'status' => 'approved',
+            ],
             // Admin
             [
                 'name' => 'Administrator',
